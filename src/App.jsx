@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import './App.css'
+import CoinTable from './Components/CoinTable/CoinTable'
+import Navbar from './Components/Navbar/Navbar'
+import Banner from './Components/Banner/Banner'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function App() {  
   return (
     <>
-      <h1 className='text-red-500'>CoinGecko Crypto Tracker</h1>
+      <Navbar/>
+      <Banner/>    
+      <CoinTable/>
     </>
   )
 }
