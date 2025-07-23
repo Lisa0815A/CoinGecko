@@ -1,4 +1,4 @@
-import BannerImg from "../../assets/banner.jpg";
+import BannerImg from "../../assets/banner1.jpg";
 function Banner(){
   return(
     <>
