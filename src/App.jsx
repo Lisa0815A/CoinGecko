@@ -1,16 +1,13 @@
-import { useState } from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
-import CoinTable from './Components/CoinTable/CoinTable'
-import Navbar from './Components/Navbar/Navbar'
-import Banner from './Components/Banner/Banner'
+import Home from './Pages/Home'
+import Routing from './Components/Routing/Routing'
 
 function App() { 
-  const [currency,setCurrency] = useState('usd');
+  
   return (
-    <>      
-      <Navbar setCurrency={setCurrency}/>
-      <Banner/>    
-      <CoinTable currency={currency}/>
+    <>        
+       <Routing/> 
     </>
   )
 }

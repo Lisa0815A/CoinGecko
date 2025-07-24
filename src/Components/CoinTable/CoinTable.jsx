@@ -1,16 +1,21 @@
 import {useEffect, useState } from "react";
 import { fetchCoinData } from "../../Services/FetchCoinData";
 import { useQuery } from "@tanstack/react-query";
-
-function CoinTable({currency}){ 
+import currencyStore from '../../States/store'
+import { useNavigate } from "react-router-dom";
+function CoinTable(){ 
+  const {currency} = currencyStore();
   const [page,setPage] = useState(1);
+  const navigate = useNavigate();
   const {data,isLoading,isError,error,isFetching} = useQuery({
     queryKey:['coins',page,currency],
     queryFn : ()=>fetchCoinData(page,currency),    
     cacheTime : 1000*60*2,
     staleTime : 100*60*2,
   })
-  
+  function handleCoinRedirect(id){
+    navigate(`/details/${id}`)
+  } 
   if(isLoading){
     return <div>Loading....</div>;
   }
@@ -39,7 +44,7 @@ function CoinTable({currency}){
         <div className="flex flex-col w-[80vw] mx-auto ">
           {data && data.map((coin)=>{
             return(
-              <div key={coin.id} className="flex items-center justify-between w-full px-2 py-4 font-semibold text-white bg-transparent ">
+              <div onClick={()=>handleCoinRedirect(coin.id)} key={coin.id} className="flex items-center justify-between w-full px-2 py-4 font-semibold text-white bg-transparent cursor-pointer">
                 <div className="flex items-center justify-start gap-3 basis-[35%]">
                   <div className="w-[5rem] h-[5rem]">
                     <img src={coin.image} className="w-full h-full"/>
