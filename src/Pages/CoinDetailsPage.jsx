@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import {fetchCoinDetails} from '../Services/fetchCoinDetails'
+import {fetchCoinDetails} from '../Services/fetchCoinDetails';
 import parse from 'html-react-parser';
-import currencyStore from '../States/store'
+import currencyStore from '../States/store';
+
 function CoinDetailsPage(){
   const {currency} = currencyStore();
   const {coinid} = useParams();
@@ -15,7 +16,7 @@ function CoinDetailsPage(){
   });
   
   if(isLoading){
-    return <div>Loading...</div>
+    return <div>DownLoading coin data...</div>
   }
   if(isError){
     return <div>Error: something went wrong</div>
